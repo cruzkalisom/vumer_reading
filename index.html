@@ -6,15 +6,14 @@
   </head>
   <body>
 
-    <!-- Botões FIXOS no HTML -->
+    
     <button id="startReading">Iniciar leitura por cursor</button>
     <button id="stopReading">Parar leitura</button>
 
-    <!-- React root -->
+    
     <div id="root"></div>
 
     <script>
-      // Esses eventos vão ser pegos dentro do React
       document.getElementById("startReading").onclick = () => {
         window.dispatchEvent(new CustomEvent("ayla-start-reading"));
       };

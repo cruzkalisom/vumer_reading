@@ -8,11 +8,11 @@ export default function App() {
   const lastTextRef = useRef("");
 
   useEffect(() => {
-    
+    // ouvir botões do index.html
     window.addEventListener("ayla-start-reading", () => startCursorReading());
     window.addEventListener("ayla-stop-reading", () => stopReading());
 
-    startCapture(); 
+    startCapture(); // inicia captura de tela invisível
   }, []);
 
   async function startCapture() {

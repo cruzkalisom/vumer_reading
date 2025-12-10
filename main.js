@@ -1,5 +1,5 @@
-const { app, BrowserWindow, desktopCapturer, ipcMain, screen } = require('electron')
-const path = require('path')
+const { app, BrowserWindow, desktopCapturer, ipcMain, screen } = require('electron');
+const path = require('path');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -8,29 +8,35 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: false
+      nodeIntegration: false,
     }
-  })
+  });
 
-  win.loadFile(path.join(__dirname, 'index.html'))
+  win.loadFile(path.join(__dirname, 'index.html'));
 }
 
 app.whenReady().then(() => {
-  createWindow()
+  createWindow();
+
   app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
-})
+  if (process.platform !== 'darwin') app.quit();
+});
 
 ipcMain.handle('get-sources', async () => {
-  const sources = await desktopCapturer.getSources({ types: ['screen'] })
-  return sources.map(s => ({ id: s.id, name: s.name }))
-})
+  const sources = await desktopCapturer.getSources({ types: ['screen'] });
+  return sources.map(s => ({ id: s.id, name: s.name }));
+});
+
+ipcMain.handle("getCursorPos", () => {
+  return screen.getCursorScreenPoint();
+});
 
 ipcMain.handle('get-cursor-point', () => {
-  return screen.getCursorScreenPoint()
-})
+  const pt = screen.getCursorScreenPoint();
+  return pt; // {x, y}
+});
