@@ -1,0 +1,21 @@
+{
+  "name": "screen-reader-prototype",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "echo \"build step omitted\""
+  },
+  "dependencies": {
+    "electron": "^26.0.0",
+    "tesseract.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
